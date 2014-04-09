@@ -34,3 +34,25 @@ To launch it, just type:
 	docker run -d -p 80 myuser/myapp
 
 Easy!
+
+
+Usage with Procfile
+^^^^^^^^^^^^^^^^^^^
+
+If you have already defined a `Procfile` (https://devcenter.heroku.com/articles/procfile)
+you can use it by defining the following `Dockerfile` instead:
+
+	FROM tutum/buildstep
+	EXPOSE 80
+	ENTRYPOINT ["/start"]
+	CMD ["web"]
+
+Modify the `EXPOSE` and `CMD` directives with the port to be exposed and the process
+type defined in the `Procfile` used to launch your application respectively.
+
+Then, execute the following to build the image:
+
+	docker build -t myuser/myapp .
+	docker run -d -p 80 myuser/myapp
+
+Done!
