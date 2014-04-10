@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ "$#" -eq 0 ]; then
+	echo "No command/process type specified"
+        exit 1
+fi
+
 if [ ! -d "/app" ]; then
 	if [ -n "$GIT_REPO" ]; then
 		git clone "$GIT_REPO" /app
@@ -8,8 +13,5 @@ if [ ! -d "/app" ]; then
 		exit 1
 	fi
 fi
-if [ -f "/app/Procfile" ]; then
-	exec /start "$@"
-else
-	exec /exec "$@"
-fi
+
+exec /exec "$@"
