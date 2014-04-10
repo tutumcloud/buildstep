@@ -37,7 +37,7 @@ Easy!
 
 
 Usage with Procfile
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 If you have already defined a `Procfile` (https://devcenter.heroku.com/articles/procfile)
 you can use it by defining the following `Dockerfile` instead:
