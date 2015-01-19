@@ -4,14 +4,17 @@ if [ "$#" -eq 0 ]; then
         exit 1
 fi
 
+echo "Use local repo? $USE_LOCAL_REPO"
+
 if [ ! -d "/app" ]; then
 	if [ -n "$GIT_REPO" ]; then
 		git clone "$GIT_REPO" /app
 		#/build/builder
-	else
-		#echo "No \$GIT_REPO environment variable defined"
-		#exit  1
+	elif [ "true" = `echo "$USE_LOCAL_REPO" | tr [:upper:] [:lower:]` ]; then
 		cp /localrepo/ /app/ -r
+	else
+		echo "No repo defined"
+		exit  1
 	fi
 	/build/builder
 fi
