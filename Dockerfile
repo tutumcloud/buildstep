@@ -1,5 +1,5 @@
 FROM progrium/buildstep
-MAINTAINER Fernando Mayo <fernando@tutum.co>
+MAINTAINER Diogo Lucas <diogo.lucas@agcocorp.com>
 
 ADD run.sh /run.sh
 RUN chmod +x /run.sh

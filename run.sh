@@ -7,11 +7,13 @@ fi
 if [ ! -d "/app" ]; then
 	if [ -n "$GIT_REPO" ]; then
 		git clone "$GIT_REPO" /app
-		/build/builder
+		#/build/builder
 	else
-		echo "No \$GIT_REPO environment variable defined"
-		exit 1
+		#echo "No \$GIT_REPO environment variable defined"
+		#exit  1
+		cp /localrepo/ /app/ -r
 	fi
+	/build/builder
 fi
 
 exec /exec "$@"
