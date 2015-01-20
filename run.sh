@@ -4,12 +4,9 @@ if [ "$#" -eq 0 ]; then
         exit 1
 fi
 
-echo "Use local repo? $USE_LOCAL_REPO"
-
 if [ ! -d "/app" ]; then
 	if [ -n "$GIT_REPO" ]; then
 		git clone "$GIT_REPO" /app
-		#/build/builder
 	elif [ "true" = `echo "$USE_LOCAL_REPO" | tr [:upper:] [:lower:]` ]; then
 		cp /localrepo/ /app/ -r
 	else
