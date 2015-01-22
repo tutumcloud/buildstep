@@ -18,8 +18,8 @@ Create a `Dockerfile` similar to the following in your application code folder
 (this example is for a typical Django app):
 
 	FROM tutum/buildstep
-	EXPOSE 80
-	CMD ["python", "manage.py", "runserver", "80"]
+	EXPOSE 8000
+	CMD ["python", "manage.py", "runserver", "8000"]
 
 Modify the `EXPOSE` and `CMD` directives with the port to be exposed and the command
 used to launch your application respectively.
@@ -31,7 +31,7 @@ Then, execute the following to build the image:
 This will create an image named `myuser/myapp` with your application ready to go.
 To launch it, just type:
 
-	docker run -d -p 80 myuser/myapp
+	docker run -d -p 8000 myuser/myapp
 
 Easy!
 
@@ -42,12 +42,12 @@ Usage with Procfile
 If you have already defined a `Procfile` (https://devcenter.heroku.com/articles/procfile)
 like the following:
 
-	web: python manage.py runserver 80
+	web: python manage.py runserver 8000
 
 you can use it by defining the following `Dockerfile` instead:
 
 	FROM tutum/buildstep
-	EXPOSE 80
+	EXPOSE 8000
 	CMD ["/start", "web"]
 
 Modify the `EXPOSE` and `CMD` directives with the port to be exposed and the process
@@ -58,7 +58,7 @@ It also works if you don't have a Procfile
 Then, execute the following to build the image:
 
 	docker build -t myuser/myapp .
-	docker run -d -p 80 myuser/myapp
+	docker run -d -p 8000 myuser/myapp
 
 Done!
 
@@ -74,9 +74,9 @@ you can specify the process type name as the run command.
 Otherwise, you can specify the actual command used to launch your application as the run command. For example:
 
 	# Without a Procfile
-	docker run -d -p 80 -e GIT_REPO=https://github.com/fermayo/hello-world-django.git tutum/buildstep python manage.py runserver 80
+	docker run -d -p 8000 -e GIT_REPO=https://github.com/fermayo/hello-world-django.git tutum/buildstep python manage.py runserver 8000
 
 	# With a Procfile (or relying on the default Procfile provided by the buildpack)
-	docker run -d -p 80 -e GIT_REPO=https://github.com/fermayo/hello-world-php.git tutum/buildstep /start web
+	docker run -d -p 8000 -e GIT_REPO=https://github.com/fermayo/hello-world-php.git tutum/buildstep /start web
 
 No `docker build` required!
