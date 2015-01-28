@@ -9,6 +9,7 @@ if [ ! -d "/app" ]; then
 		git clone "$GIT_REPO" /app
 	elif [ "true" = `echo "$USE_LOCAL_REPO" | tr [:upper:] [:lower:]` ]; then
 		cp /localrepo/ /app/ -r
+		cp /env/ /tmp/env -r
 	else
 		echo "No repo defined"
 		exit  1
