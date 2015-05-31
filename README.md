@@ -17,9 +17,11 @@ Usage
 Create a `Dockerfile` similar to the following in your application code folder 
 (this example is for a typical Django app):
 
-	FROM tutum/buildstep
-	EXPOSE 8000
-	CMD ["python", "manage.py", "runserver", "8000"]
+```Dockerfile
+FROM tutum/buildstep
+EXPOSE 8000
+CMD ["python", "manage.py", "runserver", "8000"]
+```
 
 Modify the `EXPOSE` and `CMD` directives with the port to be exposed and the command
 used to launch your application respectively.
@@ -46,9 +48,11 @@ like the following:
 
 you can use it by defining the following `Dockerfile` instead:
 
-	FROM tutum/buildstep
-	EXPOSE 8000
-	CMD ["/start", "web"]
+```Dockerfile
+FROM tutum/buildstep
+EXPOSE 8000
+CMD ["/start", "web"]
+```
 
 Modify the `EXPOSE` and `CMD` directives with the port to be exposed and the process
 type defined in the `Procfile` used to launch your application respectively.
