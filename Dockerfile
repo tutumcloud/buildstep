@@ -1,10 +1,9 @@
-FROM progrium/buildstep
+FROM progrium/buildstep:latest
 MAINTAINER Fernando Mayo <fernando@tutum.co>
 
 ADD run.sh /run.sh
-RUN chmod +x /run.sh
+RUN rm -fr /app
 
-ONBUILD RUN mkdir -p /app
 ONBUILD ADD . /app
 ONBUILD RUN /build/builder
 
