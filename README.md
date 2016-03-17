@@ -1,5 +1,7 @@
 tutum/buildstep
 ===============
+**This image will be deprecated soon. Please use the image: ** https://github.com/progrium/buildstep
+
 
 Base docker image to create containers from app code using Heroku's buildpacks.
 
